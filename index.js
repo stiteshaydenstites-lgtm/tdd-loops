@@ -12,6 +12,12 @@
  */
 export function echo(word, n) {
   // TODO
+  let index = 0;
+  let myWord = "";
+  for(index; index<n; index++){
+    myWord += word;
+  }
+  return myWord;
 }
 
 /**
@@ -28,6 +34,32 @@ export function echo(word, n) {
  */
 export function echoWithSpace(word, n) {
   // TODO
+  let index = 0;
+  let myWord = "";
+  if(n===0){
+    return "";
+  }
+  else if(n===1){
+    return word;
+  }
+  else if(word===""){
+    return "";
+  }
+  else{
+    for(index; index<n; index++){
+    myWord+= word;
+    if(index === n-1){
+
+    }else{
+      myWord+=" ";
+    }
+    
+    
+  }
+
+    return myWord;
+  }
+  
 }
 
 /**
@@ -43,6 +75,21 @@ export function echoWithSpace(word, n) {
  */
 export function sumTo(n) {
   // TODO
+  let index = 0;
+  let sum = 0;
+  if(n<=0){
+    return 0;
+  }
+  else if(n===1){
+    return 1;
+  }
+  else{
+    for(index; index<=n; index++){
+     sum+=index; 
+    }
+    
+  }
+  return sum;
 }
 
 /**
@@ -59,6 +106,26 @@ export function sumTo(n) {
  */
 export function sumFromTo(a, z) {
   // TODO
+    if(a===z){
+      return a;
+    }
+    else if(a>z){
+      return 0;
+    }
+    else if(a<z){
+      let sum = 0;
+      for(let index=a; index<=z; index++){
+        sum+=index;
+      }
+      return sum;
+    }
+    else {
+      let sum = 0;
+      for(let index=a; index<=z; index++){
+        sum+=index;
+      }
+      return sum;
+    }
 }
 
 /**
@@ -74,6 +141,18 @@ export function sumFromTo(a, z) {
  */
 export function countdown(n) {
   // TODO
+  let indexToOne = n;
+  if(n===1){
+    console.log(1);
+  }
+  else if(n<=0){
+
+  }
+  else{
+    for(indexToOne; indexToOne>=1; indexToOne--){
+      console.log(indexToOne);
+    }
+  }
 }
 
 /**
@@ -89,6 +168,28 @@ export function countdown(n) {
  */
 export function sumOddsToN(n) {
   // TODO
+    if(n===1){
+      return 1;
+    }
+    else if(n===0){
+      return 0;
+    }
+    else if(n%2===0){
+      let stopIndex = n-1;
+      let sum =0;
+      for(let index=1; index<=stopIndex; index+=2){
+        sum+=index;
+      }
+      return sum;
+    }
+    else{
+      let stopIndex = n;
+      let sum = 0;
+      for(let index=1; index<=stopIndex; index+=2){
+        sum+=index;
+      }
+      return sum;
+    }
 }
 
 /**
@@ -109,6 +210,25 @@ export function sumOddsToN(n) {
  */
 export function getGrowthTime(start, target) {
   // TODO
+  
+  let currentNumBacteria = start;
+  
+  if(target===0){
+    return 0;
+  }
+  else if(start>target){
+    return 0;
+  }
+  else if(start<=0){
+    return undefined;
+  }
+  else{
+    let time = 0;
+    for(currentNumBacteria; currentNumBacteria<target; currentNumBacteria*=2){
+      time+=20;
+    }
+    return time;
+  }
 }
 
 /**
@@ -129,6 +249,25 @@ export function getGrowthTime(start, target) {
  */
 export function getCompoundTime(start, rate, target) {
   // TODO
+  if(start<=0){
+    return undefined;
+  }
+  else if(rate<=0){
+    return undefined;
+  }
+  else if(start===target)
+    return 0;
+  else if(start>target)
+    return 0;
+  else{
+    let numYears = 0;
+    let currentAmount = start;
+    let rateMulti = 1+rate;
+    for(currentAmount; currentAmount<target; currentAmount*= rateMulti){
+      numYears++;
+    }
+    return numYears;
+  }
 }
 
 /**
@@ -155,6 +294,41 @@ export function getCompoundTime(start, rate, target) {
  */
 export function moveWater(colander, bucket) {
   // TODO
+  if(colander<=0)
+    return undefined;
+  
+  else if(bucket<=0)
+    return 0;
+  
+  else if(colander>=bucket)
+    return 1;
+  else if(colander===1)
+    return bucket;
+  else{
+    let carryableWater = colander;
+    let numTrips = 1;
+    let numCups = colander;
+    //let cupsLeft = bucket;
+    for(numCups; bucket>numCups; numTrips+=1){
+      
+      
+      //console.log(`The Current Variables are, Trips: ${numTrips} , Current Cups of Water: ${numCups} , Amount of Water you can Carrry: ${carryableWater}`);
+      
+      if(carryableWater===1){
+        numCups+=carryableWater;
+      }
+      else{
+        carryableWater-=1;
+        numCups+=carryableWater;
+        
+      }
+      
+      
+    }
+    return numTrips;
+      
+  }
+  
 }
 
 /**
@@ -175,4 +349,27 @@ export function moveWater(colander, bucket) {
  */
 export function fizzbuzz(n) {
   // TODO
+  if(n===0)
+    //Do Nothing
+    return;
+  else if(n<0)
+    //Does Nothing
+    return;
+  else{
+    let multipleOfThree = 'fizz';
+    let multipleOfFive = 'buzz';
+    let multipleOfBoth = 'fizzbuzz';
+    for(let indexToN = 1; indexToN<=n; indexToN++){
+      if(indexToN%3===0 && indexToN%5===0)
+        console.log('fizzbuzz');
+      else if(indexToN%3===0)
+        console.log('fizz');
+      else if(indexToN%5===0)
+        console.log('buzz');
+      else{
+        console.log(indexToN);
+      }
+
+    }
+  }
 }
